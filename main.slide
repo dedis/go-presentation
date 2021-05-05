@@ -1,0 +1,25 @@
+# Go for your PhD
+The language, its tools, best practices and cool toys
+6 May 2021
+
+Gaurav Narula
+
+Noémien Kocher
+
+Pierluca Borsò
+
+
+## Talk outline
+
+- Why is Go awesome? <!-- language properties -->
+- The tools you're going to love <!-- fmt, vet, race detection, testing tools ... -->
+- How to screw up (or not) <!-- bad practices and better ones -->
+- Understanding and debugging <!-- using GoLand --> 
+- Getting that extra performance kick <!-- profiling, workers, directio, ... -->
+- Monitoring and measurements <!-- prometheus -->
+
+.image assets/gophers/GOPHER_ADADEMY.png _ 250
+
+## Next slide
+
+And some more content

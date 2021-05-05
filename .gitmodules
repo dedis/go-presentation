@@ -1,0 +1,3 @@
+[submodule "assets/gophers"]
+	path = assets/gophers
+	url = git@github.com:ashleymcnamara/gophers.git
