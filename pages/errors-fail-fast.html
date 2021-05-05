@@ -1,0 +1,25 @@
+<p></p>
+
+
+<pre style="padding: 20px; background: #ffe0d0">
+err := op1() {
+    if err == {
+        dothing1()
+        ...
+    } else {
+        return xerrors.Errorf(...)
+    }
+}
+</pre>
+
+<p></p>
+
+<pre style="padding: 20px; background: #a5fff2">
+err := op1() {
+    if err == {
+        return xerrors.Errorf(...)
+    }
+
+    dothing1()
+}
+</pre>

@@ -23,3 +23,49 @@ Pierluca Borsò
 ## Next slide
 
 And some more content
+
+## Best practices
+
+- Organize your source
+- Handle errors
+- Use custom types
+
+## Organize your sources
+
+- (**bad** code + **good** architecture) `>` (**good** code + **bad** architecture)
+- break down your project into independent modules
+- iterative process (that's an investment, but worth it)
+- prevents import cycles
+- 🏆 🏆 🏆 3 wins: readability / testability / maintainability
+
+```
+bypros
+│   mod.go
+│
+└───browse         <- standalone functionality
+│   │   mod.go     <- interface
+│   │
+│   └───paginate   <- an implementation
+│       │   mod.go
+│   
+└───storage
+    │   ...
+```
+
+## Handle errors
+
+.image assets/free-gophers-pack/illustrations/png/2.png 250 _
+
+.html pages/errors.html
+
+## If your code doesn't look like this ... 🟠
+
+.html pages/errors-handling.html
+
+## Fail fast
+
+.html pages/errors-fail-fast.html
+
+## Embed functionalities with struct
+
+.html pages/embed-struct.html

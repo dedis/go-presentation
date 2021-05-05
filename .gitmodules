@@ -1,3 +1,6 @@
 [submodule "assets/gophers"]
 	path = assets/gophers
 	url = git@github.com:ashleymcnamara/gophers.git
+[submodule "assets/free-gophers-pack"]
+	path = assets/free-gophers-pack
+	url = https://github.com/MariaLetta/free-gophers-pack.git

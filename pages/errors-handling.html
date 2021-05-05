@@ -1,0 +1,23 @@
+
+<p></p>
+<pre>
+bob, alice, <b>err</b> := retreive()
+<b>if err != nil {</b>
+    return xerrors.Errorf("failed to get Bob and Alice: %v", err)
+<b>}</b>
+
+<b>err</b> = op1()
+<b>if err != nil {</b>
+    return xerrors.Errorf("failed to do op1: %v", err)
+<b>}</b>
+
+<b>err</b> = op2()
+<b>if err != nil {</b>
+    return xerrors.Errorf("failed to do op2: %v", err)
+<b>}</b>
+
+<b>err</b> = op3()
+<b>if err != nil {</b>
+    return xerrors.Errorf("failed to do op3: %v", err)
+<b>}</b>
+</pre>
