@@ -8,7 +8,7 @@ targeted at PhD students at the Decentralized and Distributed Systems Lab.
 Use the golang present tool
 ```
 # setup GOPATH before running this: https://golang.org/doc/code.html#GOPATH
-go get github.com/golang/tools/cmd/present
+go get golang.org/x/tools/cmd/present
 $GOPATH/bin/present -base $GOPATH/pkg/mod/golang.org/x/tools@v0.1.0/cmd/present
 ```
 
