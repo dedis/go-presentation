@@ -35,13 +35,13 @@ And some more content
 ## Organize your sources
 
 - (**bad** code + **good** architecture) `>` (**good** code + **bad** architecture)
-- break down your project into independent modules
+- break down your project into independent packages
 - iterative process (that's an investment, but worth it)
 - prevents import cycles
 - Avoid general-purpose packages:
     - ⛔️ `utils`, ⛔️ `types`, ⛔️ `data`, ...
     - Break up by topic or dependency
-- Define interface for your module
+- Define interface for your packages
 - 🏆 🏆 🏆 3 wins: readability / testability / maintainability
 
 <center style="padding: 30px">
@@ -64,7 +64,7 @@ server
 │   └───postgresql   <- an implementation
 │       │   mod.go
 │   
-└───othermodule
+└───otherpackage
     │   ...
 ```
 
