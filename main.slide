@@ -249,7 +249,10 @@ take an interface, delegate responsibility
 - You **can't and shouldn't** optimize code ahead of writing it
 - Measure first, act later
 
-<center style="font-style:italic;font-size:1.2em;color:#888;padding:80px;font-weight:100">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet"> 
+
+<center style="font-style:normal;font-family:'Lato', sans-serif;font-size:1.2em;color:#888;padding:80px;font-weight:300;letter-spacing:1px;">
 
 “The real problem is that programmers have spent far too much time worrying about efficiency in the wrong places and at the wrong times; <b>premature optimization is the root of all evil</b> (or at least most of it) in programming.”<br>
 <span style="font-size:.7em;padding:20px">-The Art of Computer Programming</span>
