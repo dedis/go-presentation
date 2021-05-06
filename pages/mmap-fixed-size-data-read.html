@@ -1,0 +1,46 @@
+<div style="font-size: 12px; display:flex;flex-direction:row;align-items:flex-start;">
+
+<pre style="padding: 20px; font-size: 12px">
+import (
+	// ..
+	"github.com/edsrzf/mmap-go"
+)
+
+type MyData struct {
+	Data *[32]byte // fix size of 32B
+}
+
+func parseStruct() error {
+	f, err := os.OpenFile("./struct", <b>os.O_RDONLY</b>, 0644)
+	if err != nil {
+		return xerrors.Errorf("failed to open file: %v", err)
+	}
+	defer f.Close()
+
+	buf, err := mmap.Map(f, <b>os.O_RDONLY</b>, 0)
+	if err != nil {
+		return xerrors.Errorf("failed to mmap file: %v", err)
+	}
+	defer buf.Unmap()
+
+	myData := make([]MyData, 10000)
+</pre>
+
+<pre style="padding: 20px; font-size: 12px">
+	for i := 0; i < 10000; i++ {
+		// careful here
+		myData[i].Data = (*[32]byte)(<b>unsafe</b>.Pointer(&buf[32*i]))
+	}
+
+	for i := 0; i < 10; i++ {
+		fmt.Printf("%x\n", *myData[i].Data)
+	}
+
+	// this should cause a <b>SIGBUS</b>
+	//myData[1].Data[0] = 0
+
+	return nil
+}
+</pre>
+
+</div>

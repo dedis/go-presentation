@@ -119,3 +119,65 @@ take an interface, delegate responsibility
 ## Better
 
 .play goroutines2.go
+## File Optimisations
+
+- The suggestions here don't apply for normal scenarios
+- As a rule of thumb, prefer to use io.Reader, io.Writer interfaces - *os.File implements them
+- However, there might be scenarios where you want to avoid them
+
+## Recap: Disk IO and Virtual Memory
+
+- Traditional read/write APIs use the read/write syscalls
+
+- Read syscall:
+  - Requests the kernel to read the file at an offset
+  - If the page is available in the kernel's page cache, the kernel copies it to user space buffer
+  - Otherwise we have a page fault, kernel reads the page into page cache and then copies it into user space buffer
+
+- Write syscall:
+  - Requests the kerel to copy the data into page cache.
+  - Kernel schedules the sync to disk
+  - User can block on sync using fsync
+
+## Recap: Disk IO and Virtual Memory
+.image assets/io/traditional.svg 700 _
+
+## Memory Mapping
+
+- mmap allows mapping of an entire file in memory
+- Process' virtual address space maps directly to page cache
+  - No copying of buffers
+- Does not imply you need RAM == size of file
+  - Because pages are loaded on demand
+- Can also map regions of the file in memory
+  - Caveat: offset must be page aligned (usually 4K but varies with the system)
+
+## Memory Mapping
+
+- Kernel does have to do more book keeping behind the scenes
+- Might be worth it if you're dealing with a large file and want to avoid allocations again and again
+- A page fault in mmap doesn't preempt a Go routine
+  - you'd underutilise your CPU in that case because an OS thread would be [blocked](https://valyala.medium.com/mmap-in-go-considered-harmful-d92a25cb161d)
+- Watchout for concurrent write operations to an mmaped file. `ftruncate` for instance doesn't play well with mmap
+  - Have a look at [Bryan Cantrill's experience with tail](https://youtu.be/vm1GJMp0QN4?t=2463)
+
+## Memory Mapping
+
+.html pages/mmap-file-modify.html
+
+## Memory Mapping
+
+.html pages/mmap-fixed-size-data-read.html
+
+## Direct IO
+
+- As the name implies, it allows bypassing the page cache completely!
+- Data is copied directly to/from the userspace/disk
+- Writes/Reads must be block aligned - usually 512B.
+- Useful if you want to control caching on the application level
+- Allows finer control over scheduling IO - remember writes just mark a page dirty?
+  - the Go runtime and the kernel would still be scheduling your thread
+
+## Direct IO
+
+.html pages/directio-file-copy.html

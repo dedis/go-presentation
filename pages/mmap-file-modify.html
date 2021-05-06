@@ -1,0 +1,42 @@
+<div style="display:flex;flex-direction:row;align-items:flex-start;">
+
+<pre style="padding: 20px; font-size: 15px">
+import (
+	// ..
+	"github.com/edsrzf/mmap-go"
+)
+
+func fixTypo() error {
+	f, err := os.OpenFile("./data", os.O_RDWR, 0644)
+	if err != nil {
+		return xerrors.Errorf("failed to open file: %v", err)
+	}
+	defer f.Close()
+
+	buf, err := mmap.Map(f, os.O_RDWR, 0)
+	if err != nil {
+		return xerrors.Errorf("failed to mmap file: %v", err)
+	}
+	defer buf.Unmap()
+
+	buf[10] = 'S'
+
+	err = buf.Flush()
+	if err != nil {
+		return xerrors.Errorf("failed to flush file: %v", err)
+	}
+</pre>
+<pre style="padding: 20px; font-size: 15px">
+	return nil
+}
+
+<b>Before</b>
+<pre style="padding: 20px; font-size: 15px">
+Hello DEDIs!
+</pre>
+
+<b>After</b>
+<pre style="padding: 20px; font-size: 15px">
+Hello DEDIS!
+</pre>
+</div>
