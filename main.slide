@@ -20,9 +20,97 @@ Pierluca Borsò
 
 .image assets/gophers/GOPHER_ADADEMY.png _ 250
 
-## Next slide
+## Why is Go awesome? - the origin story
 
-And some more content
+- Imagine you're working at Google, and seeing the company waste a ton of money every day...
+
+.image assets/xkcd/compiling.png 400 _
+
+- and it's not just compilation !
+
+## The origin story (cont'd)
+
+- C++ is high performance, but cumbersome
+- Usability: let's not go there
+- Parallelism: only achieved through specialized libraries
+- Memory management: manual
+- Deployment: dependencies are a pain (DLLs)
+- Code formatting: inconsistent across teams
+- Maintenance: changing an API in a library is hell if you're Google
+
+## Go as a solution
+
+- High-performance, compiled language inspired by C
+- Simple unambiguous syntax, optimized for compilation and human readability
+- Statically linked, easy deployment *even across systems*
+- Garbage-collected
+- Concurrency as a first class-citizen (channels, goroutines)
+- Easy to refactor or change APIs: the AST can be manipulated very easily
+
+## Go as a solution (cont'd)
+
+.image assets/free-gophers-pack/characters/png/21.png 400 _
+
+## Go as a solution (cont'd)
+
+- Go is very opinionated
+- There's one right way of doing things, incl. code formatting
+- Constrains you as a developer, but it saves everyone's time
+
+.image assets/free-gophers-pack/characters/png/28.png 300 _
+
+## Tools you'll love
+
+- go get, go install, go build, go run
+- gofmt, goimports
+- godoc, go doc
+- go vet, staticcheck
+- race detection, go test
+
+.image assets/free-gophers-pack/characters/png/59.png 300 _
+
+## gofmt and goimports
+
+- (demo)
+
+## Is my code broken?
+
+- go vet: demo
+- staticcheck: demo
+
+## Is my code broken? race detection!
+
+- go run **--race** bad_race.go
+- You can use --race with all commands (build, install, run, test)
+- (demo)
+
+.image assets/gophers/GOPHER_MIC_DROP.png 300 _
+
+## Testing
+
+- Go comes with unit tests, benchmarks and examples - all built in !
+- Consider using library `github.com/stretchr/testify/require`
+
+Examples:
+- https://github.com/si-co/vpir-code/blob/main/lib/database/merkle_test.go
+- https://github.com/dedis/dela/blob/master/crypto/ed25519/example_test.go
+
+## Other demos
+
+- godoc, go doc
+
+
+
+
+## Tools you'll love
+
+- IDEs are there to help you
+- If you're a Emacs/Vim wizard, keep doing your thing. I'm sure your awesome.
+- IDEs ( VSCode, GoLand ) help you be more productive.
+- GoLand is particularly powerful, but it requires configuration.
+> Editor/Inspections
+> Tools/File Watcher
+> Tools/External Tools
 
 ## How to screw up (or not) 
 
