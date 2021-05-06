@@ -259,7 +259,7 @@ take an interface, delegate responsibility
 
 </center>
 
-## File Optimizations
+## File IO Optimizations
 
 - The suggestions here don't apply for normal scenarios
 - As a rule of thumb, prefer to use io.Reader, io.Writer interfaces - *os.File implements them
@@ -321,3 +321,10 @@ take an interface, delegate responsibility
 ## Direct IO
 
 .html pages/directio-file-copy.html
+
+## File IO Optimisations (summarizing)
+
+- read/write go through page cache and involve copy between kernel/user space
+- mmap bypasses the kernel as long as your data is in the page cache
+- DirectIO bypasses the page cache completely
+- Don't consider the last two as a default - your workload and benchmarks should guide which API to use.
