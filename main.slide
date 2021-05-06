@@ -128,3 +128,7 @@ bypros
 - Useful if you want to control caching on the application level
 - Allows finer control over scheduling IO - remember writes just mark a page dirty?
   - the Go runtime and the kernel would still be scheduling your thread
+
+## Direct IO
+
+.html pages/directio-file-copy.html
