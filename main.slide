@@ -121,11 +121,11 @@ Examples:
 - (**bad** code + **good** architecture) `>` (**good** code + **bad** architecture)
 - break down your project into independent packages
 - iterative process (that's an investment, but worth it)
-- prevents import cycles
 - Avoid general-purpose packages:
     - ⛔️ `utils`, ⛔️ `types`, ⛔️ `data`, ...
     - Break up by topic or dependency
 - Define interface for your packages
+- prevents import cycles
 - 🏆 🏆 🏆 3 wins: readability / testability / maintainability
 
 <center style="padding: 30px">
