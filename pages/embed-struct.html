@@ -4,7 +4,6 @@
 
 <pre style="padding: 20px; background: #ffe0d0"">
 type server struct {
-    ...
     router map[string]string
     routerMux sync.Mutex
     ...
@@ -14,25 +13,26 @@ func (s server) main() {
     <b>s.router.Lock()
     s.router["a"] = "b"
     s.router.Unlock()</b>
+    ...
 }
 </pre>
 
 <pre style="padding: 20px; background: #a5fff2"">
 type server struct {
-    ...
     <b>router *router</b>
     ...
 }
 
 func (s server) main() {
     <b>s.router.Add("a", "b")</b>
+    ...
 }
 
-type router struct {
+<b>type router struct {</b>
     sync.Mutex
 
     routes map[string]string
-}
+<b>}</b>
 
 func (r *router) Add(rte, dest string) {
     r.Lock()

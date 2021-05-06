@@ -24,11 +24,13 @@ Pierluca Borsò
 
 And some more content
 
-## Best practices
+## How to screw up (or not) 
 
 - Organize your source
 - Handle errors
 - Use custom types
+
+.image assets/free-gophers-pack/illustrations/png/22.png 400 _
 
 ## Organize your sources
 
@@ -36,21 +38,43 @@ And some more content
 - break down your project into independent modules
 - iterative process (that's an investment, but worth it)
 - prevents import cycles
+- Avoid general-purpose packages:
+    - ⛔️ `utils`, ⛔️ `types`, ⛔️ `data`, ...
+    - Break up by topic or dependency
+- Define interface for your module
 - 🏆 🏆 🏆 3 wins: readability / testability / maintainability
 
+<center style="padding: 30px">
+
+.link https://github.com/golang-standards/project-layout
+
+</center>
+
+## Organize your sources
+
+<div style="display:flex;justify-content:center;align-items:center; height:100%;font-size:1.6em">
+
 ```
-bypros
+server
 │   mod.go
 │
-└───browse         <- standalone functionality
-│   │   mod.go     <- interface
+└───storage          <- standalone functionality
+│   │   mod.go       <- interface
 │   │
-│   └───paginate   <- an implementation
+│   └───postgresql   <- an implementation
 │       │   mod.go
 │   
-└───storage
+└───othermodule
     │   ...
 ```
+
+</div>
+
+## Organize your sources
+
+take an interface, delegate responsibility 
+
+.html pages/organize-your-sources.html
 
 ## Handle errors
 
@@ -69,3 +93,29 @@ bypros
 ## Embed functionalities with struct
 
 .html pages/embed-struct.html
+
+## Embed functionalities with struct
+
+- not a problem for simple program, but that escalades quickly 🔥
+- first step to a good architecture
+- think of small pieces of functionalities:
+    - "I want something to store my routing that is thread-safe"
+- extract to a package when this becomes a standalone functionalities
+
+.image assets/gophers/MovingGopher.png 230 _
+
+## Channels and routines
+
+- "Do not communicate by sharing memory; instead, share memory by communicating"
+    - want to share data between routines ? 👉 channel
+- Do not spawn a dynamic number of routines
+    - use a pool with workers
+- Always have a plan to terminate your routines 🔥
+
+## Two problems (at least)
+
+.play goroutines.go
+
+## Better
+
+.play goroutines2.go

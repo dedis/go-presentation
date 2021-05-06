@@ -1,0 +1,38 @@
+<p></p>
+
+<style>
+span.comment {
+    color: #A31515;
+}
+</style>
+
+<img src="../assets/free-gophers-pack/characters/png/8.png" style="position:absolute;right:30px;top:30px" height="200px" />
+
+<div style="padding-top:100px;display:flex;flex-direction:row;align-items:flex-start;justify-content:space-around">
+<pre style="padding: 20px; background: #ffe0d0">
+<span class="comment">// server/mod.go</span>
+
+func NewServer() server {
+    <b>storage := NewMemory()</b>
+    return server {
+        storage: storage
+    }
+}
+</pre>
+
+<pre style="padding: 20px; background: #a5fff2">
+<span class="comment">// server/mod.go</span>
+
+func NewServer(<b>storage storage.Storage</b>) server {
+    return server {
+        storage: storage
+    }
+}
+
+<span class="comment">// server/storage/mod.go</span>
+
+<b>type Storage interface</b> {
+    ...
+}
+</pre>
+</div>

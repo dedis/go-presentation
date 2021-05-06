@@ -1,23 +1,41 @@
 
-<p></p>
-<pre>
-bob, alice, <b>err</b> := retreive()
-<b>if err != nil {</b>
+<p style="padding:10px"></p>
+<!--bob, alice, err := retreive()
+if err != nil {
     return xerrors.Errorf("failed to get Bob and Alice: %v", err)
-<b>}</b>
+}
 
-<b>err</b> = op1()
-<b>if err != nil {</b>
+err = op1()
+if err != nil {
     return xerrors.Errorf("failed to do op1: %v", err)
-<b>}</b>
+}
 
-<b>err</b> = op2()
-<b>if err != nil {</b>
+err = op2()
+if err != nil {
     return xerrors.Errorf("failed to do op2: %v", err)
-<b>}</b>
+}
 
-<b>err</b> = op3()
-<b>if err != nil {</b>
+err = op3()
+if err != nil {
     return xerrors.Errorf("failed to do op3: %v", err)
-<b>}</b>
-</pre>
+}-->
+
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(51, 51, 51); background: rgb(248, 248, 248) none repeat scroll 0% 0%;">bob, alice, <u>err</u> := retreive()
+<u><span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">if</span> err != <span class="hljs-literal" style="color: teal;">nil</span></u> {
+    <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">return</span> xerrors.Errorf(<span class="hljs-string" style="color: rgb(221, 17, 68);">"failed to get Bob and Alice: %v"</span>, err)
+}
+
+..., <u>err</u> = op1()
+<u><span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">if</span> err != <span class="hljs-literal" style="color: teal;">nil</span></u> {
+    <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">return</span> xerrors.Errorf(<span class="hljs-string" style="color: rgb(221, 17, 68);">"failed to do op1: %v"</span>, err)
+}
+
+..., <u>err</u> = op2()
+<u><span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">if</span> err != <span class="hljs-literal" style="color: teal;">nil</span></u> {
+    <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">return</span> xerrors.Errorf(<span class="hljs-string" style="color: rgb(221, 17, 68);">"failed to do op2: %v"</span>, err)
+}
+
+..., <u>err</u> = op3()
+<u><span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">if</span> err != <span class="hljs-literal" style="color: teal;">nil</span></u> {
+    <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">return</span> xerrors.Errorf(<span class="hljs-string" style="color: rgb(221, 17, 68);">"failed to do op3: %v"</span>, err)
+}</pre>
