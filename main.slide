@@ -62,14 +62,14 @@ Pierluca Borsò
 ## Tools you'll love
 
 - go get, go install, go build, go run
-- gofmt, goimports
+- go fmt, goimports
 - godoc, go doc
 - go vet, staticcheck
 - race detection, go test
 
 .image assets/free-gophers-pack/characters/png/59.png 300 _
 
-## gofmt and goimports
+## go fmt and goimports
 
 - (demo)
 
@@ -99,15 +99,14 @@ Examples:
 
 - godoc, go doc
 
-## Tools you'll love
-
-- IDEs are there to help you
+## IDEs
 - If you're a Emacs/Vim wizard, keep doing your thing. I'm sure your awesome.
 - IDEs ( VSCode, GoLand ) help you be more productive.
 - GoLand is particularly powerful, but it requires configuration.
 > Editor/Inspections
 > Tools/File Watcher
 > Tools/External Tools
+- We'll come back to IDEs later ;-)
 
 ## How to screw up (or not) 
 
@@ -204,7 +203,53 @@ take an interface, delegate responsibility
 ## Better
 
 .play goroutines2.go
-## File Optimisations
+
+## Understanding and debugging
+
+- Printfs everywhere != debugging, let's agree to move past that
+
+.image assets/free-gophers-pack/characters/png/5.png 300 _
+
+- So, what is good debugging?
+
+## Understanding and debugging
+
+- Debugging is a scientific process of discovery
+- Part of it is exploratory
+- Most of it is the creation and rejection of hypothesis
+
+.image assets/free-gophers-pack/characters/png/49.png 300 _
+
+- What are the tools of inquiry?
+
+## Understanding and debugging: tools
+
+- Logging
+
+  * what is the system doing? sequence and details of operations
+
+- Metrics
+
+  * how is the system performing? # of requests/s, RTT, queue lengths, etc.
+
+- Debugger
+
+  * To look deeper, much much deeper
+
+.image assets/free-gophers-pack/illustrations/png/37.png 300 _
+
+## Let's get down to debugging
+
+- Delve ... maybe not
+- GoLand or VSCode
+
+## Optimizing
+
+- You can optimize algorithms ahead of implementing them
+- You **can't and shouldn't** optimize code ahead of writing it
+- Measure first, act later
+
+## File Optimizations
 
 - The suggestions here don't apply for normal scenarios
 - As a rule of thumb, prefer to use io.Reader, io.Writer interfaces - *os.File implements them
@@ -220,7 +265,7 @@ take an interface, delegate responsibility
   - Otherwise we have a page fault, kernel reads the page into page cache and then copies it into user space buffer
 
 - Write syscall:
-  - Requests the kerel to copy the data into page cache.
+  - Requests the kernel to copy the data into page cache.
   - Kernel schedules the sync to disk
   - User can block on sync using fsync
 
