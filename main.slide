@@ -99,6 +99,13 @@ Examples:
 
 - godoc, go doc
 
+## A word on day-to-day
+
+- You probably don't want to run all of this, all the time
+- Yet, you should.
+- *Consider* setting up a Continuous Integration pipeline on your Github repo
+- **Do** configure your IDE to automate most of it
+
 ## IDEs
 - If you're a Emacs/Vim wizard, keep doing your thing. I'm sure your awesome.
 - IDEs ( VSCode, GoLand ) help you be more productive.
@@ -240,14 +247,12 @@ take an interface, delegate responsibility
 
 ## Let's get down to debugging
 
-- Delve ... maybe not
-- GoLand or VSCode
+- Delve, if you're hardcore
+- GoLand or VSCode, if you're lazy like me.
+
+.image assets/gophers/CouchPotatoGopher.png 300 _
 
 ## Optimizing
-
-- You can optimize algorithms ahead of implementing them
-- You **can't and shouldn't** optimize code ahead of writing it
-- Measure first, act later
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet"> 
@@ -258,6 +263,13 @@ take an interface, delegate responsibility
 <span style="font-size:.7em;padding:20px">-The Art of Computer Programming</span>
 
 </center>
+
+## Optimizing
+
+- You can optimize algorithms ahead of implementing them
+- You **can't and shouldn't** optimize code ahead of writing it
+- Measure first, act later
+- (profiling demo)
 
 ## File IO Optimizations
 
@@ -298,7 +310,7 @@ take an interface, delegate responsibility
 - Might be worth it if you're dealing with a large file and want to avoid allocations again and again
 - A page fault in mmap doesn't preempt a Go routine
   - you'd underutilise your CPU in that case because an OS thread would be [blocked](https://valyala.medium.com/mmap-in-go-considered-harmful-d92a25cb161d)
-- Watchout for concurrent write operations to an mmaped file. `ftruncate` for instance doesn't play well with mmap
+- Watch out for concurrent write operations to an mmaped file. `ftruncate` for instance doesn't play well with mmap
   - Have a look at [Bryan Cantrill's experience with tail](https://youtu.be/vm1GJMp0QN4?t=2463)
 
 ## Memory Mapping
@@ -328,3 +340,9 @@ take an interface, delegate responsibility
 - mmap bypasses the kernel as long as your data is in the page cache
 - DirectIO bypasses the page cache completely
 - Don't consider the last two as a default - your workload and benchmarks should guide which API to use.
+
+## CPU Optimizations
+
+- Technically, you can use assembler code within Go
+- Ask yourself: can you do better than the compiler?
+- If you want to venture down this path, best of luck
