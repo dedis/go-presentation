@@ -1,6 +1,6 @@
 <div style="font-size: 12px; display:flex;flex-direction:row;align-items:flex-start;">
 
-<pre style="padding: 20px; font-size: 12px">
+<pre style="padding: 20px; font-size: 12px; background: rgb(248, 248, 248) none repeat scroll 0% 0%;">
 import (
 	// ..
 	"github.com/edsrzf/mmap-go"
@@ -26,7 +26,7 @@ func parseStruct() error {
 	myData := make([]MyData, 10000)
 </pre>
 
-<pre style="padding: 20px; font-size: 12px">
+<pre style="margin-left: 20px; padding: 20px; font-size: 12px; background: rgb(248, 248, 248) none repeat scroll 0% 0%;">
 	for i := 0; i < 10000; i++ {
 		// careful here
 		myData[i].Data = (*[32]byte)(<b>unsafe</b>.Pointer(&buf[32*i]))
@@ -37,7 +37,7 @@ func parseStruct() error {
 	}
 
 	// this should cause a <b>SIGBUS</b>
-	//myData[1].Data[0] = 0
+	// myData[1].Data[0] = 0
 
 	return nil
 }

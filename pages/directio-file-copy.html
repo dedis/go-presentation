@@ -1,6 +1,6 @@
 <div style="font-size: 12px; display:flex;flex-direction:row;align-items:flex-start;">
 
-<pre style="padding: 20px; font-size: 12px">
+<pre style="padding: 20px; font-size: 12px; background: rgb(248, 248, 248) none repeat scroll 0% 0%;">
 // import "github.com/ncw/directio"
 
 source, err := directio.OpenFile("./source", os.O_RDONLY, 0644)
@@ -21,23 +21,22 @@ for {
         return nil
     }
 </pre>
-<pre style="padding: 20px; font-size: 12px">
-    if err == io.ErrUnexpectedEOF {
-        _, err = io.Copy(dest, bytes.NewBuffer(buf[:n]))
-        if err != nil {
-            return xerrors.Errorf("failed to write last block: %v", err)
-        }
-        return nil
-    }
-
+<pre style="margin-left: 20px; padding: 20px; font-size: 12px; background: rgb(248, 248, 248) none repeat scroll 0% 0%;">
+if err == io.ErrUnexpectedEOF {
+    _, err = io.Copy(dest, bytes.NewBuffer(buf[:n]))
     if err != nil {
-        return xerrors.Errorf("failed to read from source: %v", err)
+        return xerrors.Errorf("failed to write last block: %v", err)
     }
+    return nil
+}
 
-    _, err = io.Copy(dest, bytes.NewBuffer(buf[:]))
-    if err != nil {
-        return xerrors.Errorf("failed to write to dest: %v", err)
-    }
+if err != nil {
+    return xerrors.Errorf("failed to read from source: %v", err)
+}
+
+_, err = io.Copy(dest, bytes.NewBuffer(buf[:]))
+if err != nil {
+    return xerrors.Errorf("failed to write to dest: %v", err)
 }
 </pre>
 </div>
