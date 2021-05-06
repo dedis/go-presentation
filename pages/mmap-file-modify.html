@@ -1,6 +1,6 @@
 <div style="display:flex;flex-direction:row;align-items:flex-start;">
 
-<pre style="padding: 20px; font-size: 15px">
+<pre style="padding: 20px; font-size: 15px; background: rgb(248, 248, 248) none repeat scroll 0% 0%;">
 import (
 	// ..
 	"github.com/edsrzf/mmap-go"
@@ -26,17 +26,14 @@ func fixTypo() error {
 		return xerrors.Errorf("failed to flush file: %v", err)
 	}
 </pre>
-<pre style="padding: 20px; font-size: 15px">
+<pre style="padding: 20px; margin-left: 20px; font-size: 15px; background: rgb(248, 248, 248) none repeat scroll 0% 0%;">
 	return nil
 }
 
-<b>Before</b>
-<pre style="padding: 20px; font-size: 15px">
-Hello DEDIs!
-</pre>
+// <b>Before</b>
+// Hello DEDIs!
 
-<b>After</b>
-<pre style="padding: 20px; font-size: 15px">
+// <b>After</b>
 Hello DEDIS!
 </pre>
 </div>
