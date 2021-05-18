@@ -222,12 +222,14 @@ take an interface, delegate responsibility
 ## Understanding and debugging
 
 - Debugging is a scientific process of discovery
-- Part of it is exploratory
-- Most of it is the creation and rejection of hypothesis
+    - Observe
+    - Hypothesize
+    - Experiment
+    - Repeat
 
-.image assets/free-gophers-pack/characters/png/49.png 300 _
+.image assets/free-gophers-pack/characters/png/49.png 250 _
 
-- What are the tools of inquiry?
+- Example: authentication system mistakenly rejects credentials
 
 ## Understanding and debugging: tools
 
@@ -245,7 +247,26 @@ take an interface, delegate responsibility
 
 .image assets/free-gophers-pack/illustrations/png/37.png 300 _
 
-## Let's get down to debugging
+
+## Understanding and debugging: Logging
+
+- Logging is a powerful tool: wield it properly !
+
+- Make use of log levels to minimize the noise
+
+- Make your logs grep-friendly
+
+- Provide contextual information
+
+- You probably want to use a log library (e.g. zerolog)
+
+## Understanding and debugging: Metrics
+
+- This is about understanding the runtime characteristics of your system
+
+- We'll come back to this one later on, with a demo ;-)
+
+## Understanding and debugging: Debugging
 
 - Delve, if you're hardcore
 - GoLand or VSCode, if you're lazy like me.
@@ -264,7 +285,7 @@ take an interface, delegate responsibility
 
 </center>
 
-## Optimizing
+## Profiling
 
 - You can optimize algorithms ahead of implementing them
 - You **can't and shouldn't** optimize code ahead of writing it
