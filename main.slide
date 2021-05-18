@@ -346,3 +346,48 @@ take an interface, delegate responsibility
 - Technically, you can use assembler code within Go
 - Ask yourself: can you do better than the compiler?
 - If you want to venture down this path, best of luck
+
+## Continuous Integration
+
+- Usually features are developed on forks off the main branch
+- Everyone works on their branch independently, reconciling with the changes in `main`.
+- Important that the `main` branch (or any branch that users depend on) remain stable.
+- How do we define stability? YMMV but a good rule of thumb is to consider the following tasks
+  - Linter/Static Checker doesn't find an issue
+  - Code compiles
+  - Tests pass
+
+## Continuous Integration
+
+- CI allows automating tasks to be performed on some events
+- Events can be
+  - Pull request against a specific branch
+  - A specific comment on a PR
+  - An invocation of a webhook
+  - Creation of a Git Tag (useful for creating releases)
+  - ...
+
+## Continuous Integration (GitHub Actions)
+
+- GitHub has support for CI out of the box using GitHub actions
+- Tasks can be defined in a YAML file that's tracked in your repository
+  - `<repo_root>/.github/workflows/<workflow_name>.yml`
+- Support for Email/Slack notification
+- Tasks may be run in Linux/Windows/macOS VMs hosted by Github
+- Base images have preinstalled-software
+  - https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#preinstalled-software
+  - Useful for running some commands on the shell and storing the output in an environment variable
+
+## Continuous Integration (GitHub Actions)
+
+- Community support for common dependencies
+  - Go: https://github.com/actions/setup-go
+  - Java: https://github.com/actions/setup-java
+- Secret Tokens may be set in Repository -> Settings -> Secrets
+  - Injected as environment variables in the execution environment
+
+## Examples:
+
+- [Go linting and compiling](https://github.com/dedis/dela/tree/master/.github/workflows)
+- [Publishing a release on a new tag](https://github.com/dedis/cothority/blob/main/.github/workflows/release.yaml)
+- [Creating a DEB package on release](https://github.com/dedis/twins-demo-reset/blob/master/.github/workflows/build.yaml)
